@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/database";
+// import * as firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { useParams } from 'react-router-dom';
+import 'firebase/compat/database';
 
 class UserForm extends Component {
+
   title;
   id;
-
   constructor(props) {
     super(props);
-    this.id = this.props.params.id;
+    this.id = this.props.match.params.id;
     this.title = 'New User';
     this.state = {
       username: '',
@@ -36,16 +34,16 @@ class UserForm extends Component {
     }
   }
 
+
   render() {
     return (
       <div>
         <h1>{this.title}</h1>
         <Formik
-          enableReinitialize={true}
-          initialValues={{
+        enableReinitialize={true}
+          initialValues={{ 
             username: this.state.username,
-            email: this.state.email
-          }}
+            email: this.state.email }}
           validate={values => {
             let errors = {};
             if (!values.email) {
@@ -69,21 +67,21 @@ class UserForm extends Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              // actual submit logic... 
-              if (this.id) {
-                firebase.database().ref('/' + this.id).update({
-                  username: values.username,
-                  email: values.email
-                }).then(() => window.location.href = ("/"));
-              }
-              else {
-                firebase.database().ref('/').push({
-                  username: values.username,
-                  email: values.email
-                }).then(() => this.props.history.push("/"));
-              }
-
-              setSubmitting(false);
+            // actual submit logic... 
+            if(this.id){
+            firebase.database().ref('/'+this.id).update({
+            username: values.username,
+            email: values.email 
+            }).then(() => this.props.history.push("/")); 
+            }
+            else{
+            firebase.database().ref('/').push({
+            username: values.username,
+            email: values.email 
+            }).then(() => window.location.href = ("/")); 
+            } 
+            
+            setSubmitting(false);
             }, 400);
           }}
         >
@@ -108,12 +106,4 @@ class UserForm extends Component {
     )
   }
 }
-
-export default (props) => (
-  <UserForm
-    {...props}
-    params={useParams()}
-  />
-);
-
-// export default UserForm;
+export default UserForm;

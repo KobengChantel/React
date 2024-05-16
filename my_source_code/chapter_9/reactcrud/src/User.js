@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/database";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database';
 import { Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -9,42 +9,34 @@ class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      users: [],
       showDeleteDialog: false,
-      selectedUser: {},
-      users: []
+      selectedUser: {}
     };
-    //.add = this.add.bind(this);
+    // this.add = this.add.bind(this);
     this.closeDeleteDialog = this.closeDeleteDialog.bind(this);
     this.delete = this.delete.bind(this);
   }
   componentDidMount() {
-    firebase
-      .database()
-      .ref('/')
+    firebase.database().ref('/')
       .on('value', snapshot => {
-        //console.log(snapshot.val())
         let returnArr = [];
         snapshot.forEach(data => {
           var user = data.val();
           user['key'] = data.key;
           returnArr.push(user);
         });
+
         this.setState({
           users: returnArr
         })
+        console.log(snapshot.val())
       });
   }
   // add(e) {
   //   console.log("in add function");
-  //     this.props.history.push("/add");
+  //   this.props.history.push("/add");
   // }
-
-  openDeleteDialog(user) {
-    this.setState({
-      showDeleteDialog: true,
-      selectedUser: user
-    });
-  }
 
   closeDeleteDialog() {
     this.setState({
@@ -54,7 +46,6 @@ class User extends Component {
   }
   delete(e) {
     firebase.database().ref('/' + this.state.selectedUser.key).remove()
-
       .then(x => {
         console.log("SUCCESS");
         this.closeDeleteDialog();
@@ -81,10 +72,12 @@ class User extends Component {
         </td>
       </tr>
     );
+
+
     return (
       <div>
         <Link to="/add">
-          <Button variant="primary">Add</Button>
+          <Button variant="primary" >Add</Button>
         </Link>
         <Table striped bordered hover>
           <thead>
@@ -105,6 +98,7 @@ class User extends Component {
             <Modal.Title>Delete User</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+
             <p>Are you sure you want to delete
               {this.state.selectedUser.username}?</p>
             <hr />
