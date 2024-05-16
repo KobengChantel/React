@@ -5,15 +5,16 @@ import 'firebase/compat/database';
 import { Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
       showDeleteDialog: false,
-      selectedUser: {}
+      selectedUser: {},
+      users: [],
     };
-    // this.add = this.add.bind(this);
+    //  this.add = this.add.bind(this);
     this.closeDeleteDialog = this.closeDeleteDialog.bind(this);
     this.delete = this.delete.bind(this);
   }
@@ -30,7 +31,7 @@ class User extends Component {
         this.setState({
           users: returnArr
         })
-        console.log(snapshot.val())
+         console.log(snapshot.val())
       });
   }
   // add(e) {
@@ -38,12 +39,13 @@ class User extends Component {
   //   this.props.history.push("/add");
   // }
 
-  closeDeleteDialog() {
-    this.setState({
-      showDeleteDialog: false,
-      selectedUser: {}
-    });
-  }
+  openDeleteDialog(user){ 
+    this.setState({ 
+    showDeleteDialog: true,
+    selectedUser: user
+    }); 
+    } 
+
   delete(e) {
     firebase.database().ref('/' + this.state.selectedUser.key).remove()
       .then(x => {
@@ -56,6 +58,14 @@ class User extends Component {
       });
   }
 
+  closeDeleteDialog()
+  {this.setState({
+      showDeleteDialog: false,
+      selectedUser: {}
+    });
+  }
+  
+
   render() {
     const listUsers = this.state.users.map((user) =>
       <tr key={user.key}>
@@ -66,11 +76,9 @@ class User extends Component {
             Edit
           </Link>
         </td>
-        <td>
-          <Button
-            onClick={this.openDeleteDialog.bind(this, user)}>Remove</Button>
-        </td>
-      </tr>
+       <td><Button onClick={ this.openDeleteDialog.bind(this,user)}>Remove</Button></td>           
+    </tr> 
+     
     );
 
 
