@@ -50,7 +50,7 @@ export default Rating;
 
 const styles = {
   starStyle: {
-    color: "Green",
+    color: "Purple",
   },
    
 };
