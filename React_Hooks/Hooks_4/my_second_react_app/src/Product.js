@@ -1,19 +1,25 @@
 import React from 'react';
 import Rating from './Rating';
-import { Card } from 'react-bootstrap';
+// npm startimport { Media } from 'react-bootstrap';
+import props from 'prop-types';
+import Media from "react-bootstrap/Media"
+
+
 
 
 const Product = () => {
+ 
   return (
     <div>
-      <Card>
+      <Media>
         <img width={64}
           height={64}
           className="mr-3"
           src={props.data.imageUrl}
           alt="Image"
+          
         />
-        <Card.Body>
+        <Media.Body>
           <h5>{props.data.productName}</h5>
           {props.data.releasedDate}
           <Rating
@@ -21,10 +27,12 @@ const Product = () => {
             numOfReviews={props.data.numOfReviews}
           />
           <p>{props.data.description}</p>
-        </Card.Body>
-      </Card>
+        </Media.Body>
+      </Media>
+      
     </div>
 
   );
 }
+
 export default Product;
