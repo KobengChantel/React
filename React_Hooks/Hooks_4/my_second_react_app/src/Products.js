@@ -1,20 +1,20 @@
 import React from 'react';
 import Product from './Product';
 
+
 function Products() {
   // const products = ["Learning React", "Pro React", "Beginning React"];
   // const listProducts = products.map((product) =>
   //   <li key={product.toString()}>{product}</li>
   // );
+
   const getProducts = () => {
     return [
-
-  
       {
         imageUrl: "http://loremflickr.com/150/150?random=1",
         productName: "Product 1",
         releasedDate: "May 31, 2016",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor, tellus laoreet venenati facilisis, enim ex faucibus nulla, idrutrum ligula purus sit amet mauris. ",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean porttitor, tellus laoreet venenatis facilisis, enim ex faucibus nulla, id rutrum ligula purus sit amet mauris. ",
         rating: 4,
         numOfReviews: 2
       },
@@ -22,7 +22,7 @@ function Products() {
         imageUrl: "http://loremflickr.com/150/150?random=2",
         productName: "Product 2",
         releasedDate: "October 31, 2016",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor, tellus laoreet venenatis facilisis, enim ex faucibus nulla, idrutrum ligula purus sit amet mauris. ",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean porttitor, tellus laoreet venenatis facilisis, enim ex faucibus nulla, id rutrum ligula purus sit amet mauris. ",
         rating: 2,
         numOfReviews: 12
       },
@@ -36,6 +36,7 @@ function Products() {
       }];
   }
 
+
   const products = getProducts()
   const listProducts = products.map((product) =>
     <Product key={product.productName} data={product} />
@@ -46,6 +47,5 @@ function Products() {
       <ul>{listProducts}</ul>
     </div>
   );
-
 }
 export default Products;
