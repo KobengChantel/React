@@ -3,7 +3,7 @@ function App() {
   return (
     <div>
       <h1>
-        Learn React Hooks
+        Learn React Hooks with functions
       </h1>
     </div>
   );

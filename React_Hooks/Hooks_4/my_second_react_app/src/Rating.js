@@ -40,6 +40,6 @@ function Rating(props) {
 export default Rating;
 const styles = {
   starStyle: {
-    color: 'orange'
+    color: 'red'
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'; // npm install axios
 import ReactLoading from 'react-loading';
 import { Media, Form, Button } from 'react-bootstrap';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 
 class GitHub extends Component {
 
