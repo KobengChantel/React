@@ -16,9 +16,9 @@ function WeatherApp() {
   const fetchWeatherAPI = async () => {
     try {
       // Fetch weather data using cityName
-      const API_KEY = 'YOUR_API_KEY';
-      const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
-      const resp = await fetch(APIurl);
+      // const API_KEY = 'YOUR_API_KEY';
+      // const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
+      const resp = await fetch(APIurl); // Fetch weather data
 
       // Check if response is successful
       if (!resp.ok) {
@@ -47,11 +47,13 @@ function WeatherApp() {
 
   return (
     <>
+      {/* Container for the weather app */}
       <div className="container">
         <div className="row">
           <div className="col-sm-4">
             {/* Title of the weather app */}
             <h3 className="text-center text-success">React Weather App</h3>
+
             {/* Input field for entering city name */}
             <div className="form-group">
               <input
@@ -63,8 +65,10 @@ function WeatherApp() {
                 value={cityName}
               />
             </div>
+
             {/* Display error message if there's an error */}
             {error && <p className="text-danger">{error}</p>}
+
             {/* Render the WeatherInfo component to display weather data */}
             <WeatherInfo cityName={cityName} weatherData={weatherData} />
           </div>
