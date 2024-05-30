@@ -16,24 +16,31 @@
         <img src="img/logo.svg" style="width: 180px; margin-top: 10px;">
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="logged-in">
+          <li class="logged-in" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
           </li>
-          <li class="logged-in">
+          <li class="logged-in" style="display: none;">
             <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
-          <li class="logged-in">
+          <li class="admin" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
           </li>
-          <li class="logged-out">
+          <li class="logged-out" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
           </li>
-          <li class="logged-out">
+          <li class="logged-out" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
           </li>
+        </span>
       </ul>
     </div>
   </nav>
+
+  <!-- ADMIN ACTIONS -->
+  <form class="center-align admin-actions admin" style="margin: 40px auto; max-width: 300px; display: none;">
+    <input type="email" placeholder="User email" id="admin-email" required />
+    <button class="btn-small yellow darken-2 z-depth-0">Make admin</button>
+  </form>
 
   <!-- SIGN UP MODAL -->
   <div id="modal-signup" class="modal">
@@ -48,7 +55,12 @@
           <input type="password" id="signup-password" required />
           <label for="signup-password">Choose password</label>
         </div>
+        <div class="input-field">
+          <input type="text" id="signup-bio" required />
+          <label for="signup-bio">One Line Bio</label>
+        </div>
         <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+        <p class="error pink-text center-align"></p>
       </form>
     </div>
   </div>
@@ -67,6 +79,7 @@
           <label for="login-password">Your password</label>
         </div>
         <button class="btn yellow darken-2 z-depth-0">Login</button>
+        <p class="error pink-text center-align"></p>
       </form>
     </div>
   </div>
@@ -100,51 +113,32 @@
   <!-- GUIDE LIST -->
   <div class="container" style="margin-top: 40px;">
     <ul class="collapsible z-depth-0 guides" style="border: none;">
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white">Lorem ipsum dolor sit amet.</div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
+
     </ul>
   </div>
   
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
   <script>
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const Config = {
-    // apiKey: "AIzaSyDL5MQMehb6VWvcSy3cYZzmEXfioVZRIyA",
-    // authDomain: "learn-firebase-authentic-53633.firebaseapp.com",
-    // projectId: "learn-firebase-authentic-53633",
-    // storageBucket: "learn-firebase-authentic-53633.appspot.com",
-    // messagingSenderId: "569441364165",
-    // appId: "1:569441364165:web:eab3d2e2a08ff45ffca8ac",
-    // measurementId: "G-3MWR4C8YF5"
-  };
-  firebase.initializeApp(config);
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDlDUJhsP0_uh-YpaRfTOhWZsyY_hLukTw",
+      authDomain: "net-ninja-sandbox.firebaseapp.com",
+      databaseURL: "https://net-ninja-sandbox.firebaseio.com",
+      projectId: "net-ninja-sandbox"
+    };
+    firebase.initializeApp(config);
     
     // make auth and firestore references
     const auth = firebase.auth();
     const db = firebase.firestore();
+    const functions = firebase.functions();
 
     // update firestore settings
     db.settings({ timestampsInSnapshots: true });
-
-
-</script>
-
+  </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="scripts/auth.js"></script>
