@@ -1,7 +1,7 @@
-import Tabs from "./Tabs"; // Import the Tabs component
-import Items from "./Items"; // Import the Items component
-import Data from "./Data"; // Import the Data source
-import { useState } from "react"; // Import useState hook from React
+import Tabs from "./Tabs"; 
+import Items from "./Items"; 
+import Data from "./Data"; 
+import { useState } from "react"; 
 
 function Gallery() {
     // Initialize the state with the complete Data set
