@@ -16,8 +16,8 @@ function WeatherApp() {
   const fetchWeatherAPI = async () => {
     try {
       // Fetch weather data using cityName
-      // const API_KEY = '3e8e37f9b3ff3b37dfeb2af7260f71d6';
-      // const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
+      const API_KEY = '3e8e37f9b3ff3b37dfeb2af7260f71d6';
+      const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
       const resp = await fetch(APIurl); // Fetch weather data
 
       // Check if response is successful

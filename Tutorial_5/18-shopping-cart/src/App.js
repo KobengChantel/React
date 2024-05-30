@@ -1,12 +1,12 @@
-import Header from'./components/Header';
-import Main from './component/main';
-import Basket from './component/ basket';
+import Header from'./component/Header';
+import Main from './component/Main';
+import Basket from './component/Basket';
 
 function App() {
   return (
     <div >
       <Header/>
-      <div>
+      <div className='row'>
         <Main />
         <Basket/>
       </div>

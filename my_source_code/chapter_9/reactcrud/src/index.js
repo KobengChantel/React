@@ -14,15 +14,15 @@ import 'firebase/compat/database';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table } from 'react-bootstrap';
 
-// const config = {
-//   apiKey: "AIzaSyAg7FUAoaBsBdjAJltzv6pcjIJuua7KGE8",
-//   authDomain: "myfirstreactproject-217f8.firebaseapp.com",
-//   projectId: "myfirstreactproject-217f8",
-//   storageBucket: "myfirstreactproject-217f8.appspot.com",
-//   messagingSenderId: "231955023841",
-//   appId: "1:231955023841:web:093aea07023c6ec28034a0",
-//   measurementId: "G-FDEJC98MES"
-// };
+const config = {
+  apiKey: "AIzaSyAg7FUAoaBsBdjAJltzv6pcjIJuua7KGE8",
+  authDomain: "myfirstreactproject-217f8.firebaseapp.com",
+  projectId: "myfirstreactproject-217f8",
+  storageBucket: "myfirstreactproject-217f8.appspot.com",
+  messagingSenderId: "231955023841",
+  appId: "1:231955023841:web:093aea07023c6ec28034a0",
+  measurementId: "G-FDEJC98MES"
+};
 
 firebase.initializeApp(config);
 
