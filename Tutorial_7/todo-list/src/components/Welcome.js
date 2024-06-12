@@ -7,7 +7,7 @@ import {
 import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import "./welcome.css";
-import TodoSVG from '../assets/todo-svg.svg'
+import Todo from '../assets/To-Do-list.png'
 
 export default function Welcome() {
   const [email, setEmail] = useState("");
@@ -69,7 +69,7 @@ export default function Welcome() {
 
   return (
     <div className="welcome">
-    <img src={TodoSVG} className="todo-svg" />
+    <img src={Todo} className="ToDo-list" />
       <h1>Todo-List</h1>
       <div className="login-register-container">
         {isRegistering ? (

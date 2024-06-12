@@ -1,12 +1,13 @@
 import React from 'react';
 
-export default function Homepage() {
-  return (
-    <div>
-      <h1>Test</h1>
-    </div>
-  )
-}import React, { useEffect, useState } from "react";
+// export default function Homepage() {
+//   return (
+//     <div>
+//       <h1>Test</h1>
+//     </div>
+//   )
+// }
+import { useEffect, useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
@@ -18,8 +19,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from '@mui/icons-material/Logout';
 import CheckIcon from '@mui/icons-material/Check';
+// import { Button } from '@mui/material';
 
-export default function Homepage() {
+
+
+export default function Homepage()
+{
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
